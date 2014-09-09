@@ -4,10 +4,10 @@ A Google Apps Script for creating a report spreadsheet based on your Trello boar
 ## Quickstart 
 
 1. Set up the script properties on File > Project properties > Script properties for:
-- iterationName
-- trelloAuthToken
-- trelloAppKey
-- trelloBoardId
+ - iterationName
+ - trelloAuthToken
+ - trelloAppKey
+ - trelloBoardId
 
 2. Optional: Change the reportName on Main.gs
 

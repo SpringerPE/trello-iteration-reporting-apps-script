@@ -9,12 +9,16 @@ function runTrelloIterationReportScript() {
   var dailyStatusSheet = getOrCreateSheet(spreadsheet, "Daily status data");
   updateDailyStatusSheet(dailyStatusSheet);
   
+  var hashTagsSheet = getOrCreateSheet(spreadsheet, "Hash Tags data");
+  updateHashTagsDetails(hashTagsSheet);
+  
   // Creating the chart sheets
   var chartSheets = {}
   chartSheets["totalVsDone"] = createTotalVsDoneChartSheet(spreadsheet, iterationDetailsSheet);
   chartSheets["totalWorkBreakdown"] = createTotalWorkBreakdownChartSheet(spreadsheet, iterationDetailsSheet);
   chartSheets["completedWorkBreakdown"] = createCompletedWorkBreakdownChartSheet(spreadsheet, iterationDetailsSheet);
   chartSheets["burnUp"] = createBurnUpChartSheet(spreadsheet, dailyStatusSheet);
+  chartSheets["hashTagPoints"] = createHashTagsBarChartSheet(spreadsheet, hashTagsSheet);
   
   // TODO: Order the sheets, set the "right one" active
   

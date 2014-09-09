@@ -1,3 +1,26 @@
+function createHashTagsBarChartSheet(spreadsheet, dataSheet) {
+  var chartSheetName = 'Hash Tags Story Points';
+  
+  var chartSheet = deleteAndCreateSheet(spreadsheet, chartSheetName);
+  
+  var chartType = Charts.ChartType.BAR
+  
+  var lastRow = dataSheet.getLastRow();
+  var lastColumn = dataSheet.getLastColumn();
+
+  var ranges = new Array();
+  // First range contains the labels
+  ranges.push(getRangeByOffsets(dataSheet, 1, lastRow));
+  // Second range contains the total points
+  ranges.push(getRangeByOffsets(dataSheet, lastColumn, lastRow));
+  
+  var chart = createChart(chartSheet, chartSheetName, ranges, chartType);
+  
+  chartSheet.insertChart(chart);
+  
+  return chartSheet;
+}
+
 function createBurnUpChartSheet(spreadsheet, dataSheet) {
   
   var chartSheetName = 'Burn Up - Burn Down';

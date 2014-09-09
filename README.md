@@ -3,15 +3,22 @@ A Google Apps Script for creating a report spreadsheet based on your Trello boar
 
 ## Quickstart 
 
-1. Set up the script properties on File > Project properties > Script properties for:
- - iterationName
- - trelloAuthToken
- - trelloAppKey
- - trelloBoardId
+1. Clone this repository
 
-2. Optional: Change the reportName on Main.gs
+2. On Google Drive, create a new project
 
-3. Press the start button on Main.gs
+3. Copy and paste the .gs codes into the project 
+
+4. Set up the script properties on File > Project properties > Script properties for:
+ - *iterationName* -- this can be any name you want
+ - *trelloAuthToken*
+ - *trelloAppKey*
+ - *trelloBoardId*
+ - for the last three, [Pimp Your Trello Cards](http://bit.ly/pimpTrello) is a handy spreadsheet for getting the keys.
+
+5. Optional: Change the reportName on Main.gs
+
+6. Press the start button on Main.gs
 
 Voila! The report should be on your Google Drive
 

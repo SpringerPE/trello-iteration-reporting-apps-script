@@ -4,7 +4,7 @@ function updateHashTagsDetails(sheet) {
   
   // Get all needed data 
   // TODO: Refactor to avoid unneeded, multiple Trello requests
-  var hashTagPoints = calculateHashTags();
+  var hashTagPoints = calculateHashTags(cards);
   
   // Create Header
   var header = (["Hash tags", "Total points in iteration"]); 

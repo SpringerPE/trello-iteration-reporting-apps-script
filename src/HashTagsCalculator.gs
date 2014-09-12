@@ -1,5 +1,4 @@
-function calculateHashTags() {
-  var cards = getAllCards();
+function calculateHashTags(cards) {
   var calculatedHashTags = {}
   
   for (var i = 0; i < cards.length; i++) {
@@ -19,8 +18,7 @@ function calculateHashTags() {
   return calculatedHashTags;
 }
 
-function getAllHashTags() {
-  var cards = getAllCards();
+function getAllHashTags(cards) {
   var allHashTags = []
   
   for (var i = 0; i < cards.length; i++) {

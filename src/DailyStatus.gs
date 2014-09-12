@@ -1,13 +1,9 @@
-function updateDailyStatusSheet(sheet) {
-  
+function updateDailyStatusSheet(sheet, lists, storypointsByListName) {
+
   ensureHeader(['', 'Left in iteration', 'Work in progress', 'Completed work'], sheet)
-    
-  var lists = getOpenListsFromTrello();
-  var storypointsByListName = getStorypointsByListName(lists);
-  var listNames = getListNames();
-  
+
   var dayInWeek = Utilities.formatDate(new Date(), "GMT", "EEE");
-  
+
   // Assumptions: 
   //  - First list on the board is the backlog
   //  - Last list on the board is the completed work
@@ -15,14 +11,14 @@ function updateDailyStatusSheet(sheet) {
   //  - 'Left in iteration' is all not finished work (= backlog + in progress)
   var leftInIteration = 0, workInProgress = 0, completedWork = 0;
   
-  for (var i = 0; i < listNames.length; i++) {
+  for (var i = 0; i < lists.length; i++) {
     if (i === 0) {
-      leftInIteration += storypointsByListName[listNames[i]];
-    } else if (i === listNames.length - 1) {
-      completedWork = storypointsByListName[listNames[i]];
+      leftInIteration += storypointsByListName[lists[i].name];
+    } else if (i === lists.length - 1) {
+      completedWork = storypointsByListName[lists[i].name];
     } else {
-      workInProgress += storypointsByListName[listNames[i]];
-      leftInIteration += storypointsByListName[listNames[i]];
+      workInProgress += storypointsByListName[lists[i].name];
+      leftInIteration += storypointsByListName[lists[i].name];
     }
   }
   

@@ -1,29 +1,27 @@
-function updateIterationDetails(sheet) {
-  
+function updateIterationDetails(sheet,storypointsByListName, labels, lists, cardsByLists) {
+
   sheet.clear()
-  
-  // Get all needed data 
-  // TODO: Refactor to avoid unneeded, multiple Trello requests
-  var lists = getOpenListsFromTrello();
-  var listNames = getListNames();
-  var labels = getLabelsFromTrello();
-  var storypointsByListName = getStorypointsByListName(lists);
+
+  var listNames = [];
+  for (var i = 0; i < lists.length; i++) {
+    listNames[i] = lists[i].name
+  }
 
   // Create Header
   var header = ["Types"].concat(listNames).concat(["Total in iteration"]); 
   ensureHeader(header, sheet);
-  
+
   // Add rows for each label
   for (var property in labels) {
     if (labels[property]) {
       var newLabelRow = [labels[property]];
       var totalPointsByLabel = 0;
       for (var i = 0; i < lists.length; i++) {
-        var cellPoints = calcStorypointsForLabelColor(getCardsFromList(lists[i]),property);
+        var cellPoints = calcStorypointsForLabelColor(cardsByLists[lists[i].id],property);
         totalPointsByLabel += cellPoints;
         newLabelRow[i+1] = cellPoints;
       }
-      
+
       sheet.appendRow(newLabelRow.concat(totalPointsByLabel));
     }
   }
@@ -32,8 +30,8 @@ function updateIterationDetails(sheet) {
   var totalRow = ["Total points"];
   var totalPoints = 0;
   
-  for (var i = 0; i < listNames.length; i++) {
-    var cellPoints = storypointsByListName[listNames[i]];
+  for (var i = 0; i < lists.length; i++) {
+    var cellPoints = storypointsByListName[lists[i].name];
     totalPoints += cellPoints;
     totalRow[i+1] = cellPoints;
   }

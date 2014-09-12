@@ -1,3 +1,19 @@
+var storypointsByListName;
+
+
+function getStorypointsByListName(lists, cardsByList) {
+  var totalStorypoints = 0;
+  if (!storypointsByListName){
+    storypointsByListName = {};
+    for (var i = 0; i < lists.length; i++) {
+      storypointsByListName[lists[i].name] = calcStorypointsForCards(cardsByList[lists[i].id]);
+    }
+    if (DEBUG) Logger.log('Storypoints by listName: %s', storypointsByListName);
+  }
+  return storypointsByListName;
+}
+
+
 function getStoryPointsFromCardName(cardName) {
   if (DEBUG) Logger.log("Getting storypoints from card with name: %s", cardName)
   
@@ -22,14 +38,6 @@ function getStoryPointsFromCardName(cardName) {
   
   return storypoints;
 }   
-
-function calcStorypointsForList(list) {
-  if (DEBUG) Logger.log('Calculate storypoints for list "%s"', list.name);
-  
-  var cards = getCardsFromList(list);
-  
-  return calcStorypointsForCards(cards);
-}
 
 function calcStorypointsForCards(cards) {
   if (DEBUG) Logger.log('Calculating storypoints');
@@ -60,34 +68,4 @@ function calcStorypointsForLabelColor(cards, labelColor) {
   if (DEBUG) Logger.log('Accumulated storypoints: %s', sum.toString());
 
   return sum;
-}
-
-function getStorypointsByListName(lists) {
-  var totalStorypoints = 0;
-  
-  var storypointsByListName = {};
-  
-  for (var i = 0; i < lists.length; i++) {
-    storypointsByListName[lists[i].name] = calcStorypointsForList(lists[i]);
-  }
-  
-  if (DEBUG) Logger.log('Storypoints by listName: %s', storypointsByListName);
-
-  return storypointsByListName;
-}
-
-function getStorypointsByLabelColor(cards) {
-  
-  var labels = getLabelsFromTrello();
-  var labelColors = Object.keys(labels);
-     
-  var storypointsByLabelColor = {};
-
-  for (var i = 0; i < labelColors.length; i++) {
-    storypointsByLabelColor[labelColors[i]] = calcStorypointsForLabelColor(cards, labelColors[i]);
-  }
-  
-  if (DEBUG) Logger.log('Storypoints by labelColor: %s', storypointsByLabelColor);
-    
-  return storypointsByLabelColor;
 }

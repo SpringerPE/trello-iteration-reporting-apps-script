@@ -91,7 +91,7 @@ function createChart(chartsheet, chartsheetname, ranges, charttype) {
 }
 
 
-function createCompletedWorkBreakdownChartSheet(spreadsheet, dataSheet) {
+function createCompletedWorkBreakdownChartSheet(spreadsheet, dataSheet, labels) {
   
   var chartSheetName = 'Completed work breakdown';
   
@@ -106,14 +106,14 @@ function createCompletedWorkBreakdownChartSheet(spreadsheet, dataSheet) {
   // Second range contains the values of the completed work
   ranges.push(getRangeByOffsets(dataSheet, lastColumn - 1, lastRow - 1));
   
-  var chart = createBreakDownPieChart(chartSheet, chartSheetName, ranges);
+  var chart = createBreakDownPieChart(chartSheet, chartSheetName, ranges, labels);
   
   chartSheet.insertChart(chart);
     
   return chartSheet;
 }
 
-function createTotalWorkBreakdownChartSheet(spreadsheet, dataSheet) {
+function createTotalWorkBreakdownChartSheet(spreadsheet, dataSheet labels) {
   
   var chartSheetName = 'Total work breakdown';
   
@@ -128,16 +128,16 @@ function createTotalWorkBreakdownChartSheet(spreadsheet, dataSheet) {
   // Second range contains the values of the total work
   ranges.push(getRangeByOffsets(dataSheet, lastColumn, lastRow - 1));
   
-  var chart = createBreakDownPieChart(chartSheet, chartSheetName, ranges);
+  var chart = createBreakDownPieChart(chartSheet, chartSheetName, ranges, labels);
   
   chartSheet.insertChart(chart);
     
   return chartSheet;
 }
 
-function createBreakDownPieChart(chartSheet, chartSheetName, ranges) {
+function createBreakDownPieChart(chartSheet, chartSheetName, ranges, labels) {
   
-  var colors = Object.keys(getLabelsFromTrello())
+  var colors = Object.keys(labels)
 
   var chartBuilder = chartSheet.newChart()
     .setChartType(Charts.ChartType.PIE)

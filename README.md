@@ -20,7 +20,7 @@ A Google Apps Script for creating a report spreadsheet based on your Trello boar
 
 6. Press the start button on Main.gs
 
-7. Optional: Configure an automatic (time based) trigger by using the 'Resource - Current Script’s triggers' dialog.
+7. Optional: Configure an automatic (time based) trigger by using the 'Resources - Current Script’s triggers' dialog.
 
 Voila! The report should be on your Google Drive
 

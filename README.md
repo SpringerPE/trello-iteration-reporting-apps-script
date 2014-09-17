@@ -7,7 +7,7 @@ A Google Apps Script for creating a report spreadsheet based on your Trello boar
 
 2. On Google Drive, create a new project
 
-3. Copy and paste the .gs codes into the project 
+3. Use the [GAS-pump gem](https://github.com/SpringerPE/gas-pump) to upload the files to the new project that you have just created
 
 4. Set up the script properties on File > Project properties > Script properties for:
  - *iterationName* -- this can be any name you want

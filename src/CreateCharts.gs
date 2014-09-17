@@ -113,7 +113,7 @@ function createCompletedWorkBreakdownChartSheet(spreadsheet, dataSheet, labels) 
   return chartSheet;
 }
 
-function createTotalWorkBreakdownChartSheet(spreadsheet, dataSheet labels) {
+function createTotalWorkBreakdownChartSheet(spreadsheet, dataSheet, labels) {
   
   var chartSheetName = 'Total work breakdown';
   

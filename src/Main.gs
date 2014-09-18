@@ -25,7 +25,22 @@ function runTrelloIterationReportScript() {
   chartSheets["burnUp"] = createBurnUpChartSheet(spreadsheet, dailyStatusSheet);
   chartSheets["hashTagPoints"] = createHashTagsBarChartSheet(spreadsheet, hashTagsSheet);
   
-  // TODO: Order the sheets, set the "right one" active
+  // Order the sheets
+  var sheetNamesOrder = ["Burn Up - Burn Down",
+                         "Total vs. Done", 
+                         "Total work breakdown", 
+                         "Completed work breakdown", 
+                         "Hash Tags Story Points", 
+                         "Iteration details data", 
+                         "Daily status data", 
+                         "Hash Tags data"]
+  
+  sheetNamesOrder.forEach(function(sheet) {
+    var tab = spreadsheet.getSheetByName(sheet);
+    spreadsheet.setActiveSheet(tab);
+    var orderNumber = sheetNamesOrder.indexOf(sheet) + 1;
+    spreadsheet.moveActiveSheet(orderNumber);
+  })
   
   // Remove unused default sheet "Sheet1"
   var sheet1 = spreadsheet.getSheetByName("Sheet1");

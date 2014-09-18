@@ -1,4 +1,4 @@
-function updateHashTagsDetails(sheet) {
+function updateHashTagsDetails(sheet, card) {
   
   sheet.clear();
   

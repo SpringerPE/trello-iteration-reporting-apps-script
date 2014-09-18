@@ -1,5 +1,5 @@
 function retrieveCardsByListsFromTrello(lists) {
-  var cards = retreieveAllCardsFromTrello();
+  var cards = retrieveAllCardsFromTrello();
   return groupCardsByLists(cards, lists);
 }
 
@@ -17,7 +17,7 @@ function groupCardsByLists(cards, lists) {
   return cardsByLists;
 }
 
-function retreieveAllCardsFromTrello() {
+function retrieveAllCardsFromTrello() {
   if (DEBUG) Logger.log('Retrieving all cards from board %s', trelloBoardId);
   var trelloUrl = "https://trello.com/1/boards/" + trelloBoardId + "/cards?filter=open&key=" + trelloAppKey + "&token=" + trelloAuthToken;
   var response = UrlFetchApp.fetch(trelloUrl);

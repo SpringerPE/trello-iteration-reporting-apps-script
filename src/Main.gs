@@ -4,7 +4,7 @@ function runTrelloIterationReportScript() {
   var lists = retrieveOpenListsFromTrello();
   var labels = retrieveLabelsFromTrello();
   var cardsByLists = retrieveCardsByListsFromTrello(lists);
-  var allCards = retreieveAllCardsFromTrello();
+  var allCards = retrieveAllCardsFromTrello();
   var storypointsByListName = getStorypointsByListName(lists,cardsByLists);
   
   // Update the data sheets

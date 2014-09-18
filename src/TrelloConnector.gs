@@ -19,7 +19,7 @@ function groupCardsByLists(cards, lists) {
 
 function retrieveAllCardsFromTrello() {
   if (DEBUG) Logger.log('Retrieving all cards from board %s', trelloBoardId);
-  var trelloUrl = "https://trello.com/1/boards/" + trelloBoardId + "/cards?filter=open&key=" + trelloAppKey + "&token=" + trelloAuthToken;
+  var trelloUrl = "https://trello.com/1/boards/" + trelloBoardId + "/cards?filter=visible&key=" + trelloAppKey + "&token=" + trelloAuthToken;
   var response = UrlFetchApp.fetch(trelloUrl);
 
   var cards = JSON.parse(response.getContentText());

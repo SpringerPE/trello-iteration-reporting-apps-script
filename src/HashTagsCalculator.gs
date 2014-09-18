@@ -18,19 +18,6 @@ function calculateHashTags(cards) {
   return calculatedHashTags;
 }
 
-function getAllHashTags(cards) {
-  var allHashTags = []
-  
-  for (var i = 0; i < cards.length; i++) {
-    cardName = cards[i].name;
-    allHashTags.push(mapPointsToHashTags(cardName));
-  };
-  
- if (DEBUG) Logger.log("Detected hash tags: %s", allHashTags);
- 
- return allHashTags;
-}
-
 function mapPointsToHashTags(cardName) {
   var hashTags = getHashTagsFromCardName(cardName);
   var storyPoints = getStoryPointsFromCardName(cardName);

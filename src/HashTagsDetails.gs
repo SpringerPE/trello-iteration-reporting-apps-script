@@ -3,7 +3,6 @@ function updateHashTagsDetails(sheet, cards) {
   sheet.clear();
   
   // Get all needed data 
-  // TODO: Refactor to avoid unneeded, multiple Trello requests
   var hashTagPoints = calculateHashTags(cards);
   
   // Create Header

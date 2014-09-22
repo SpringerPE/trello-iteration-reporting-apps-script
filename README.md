@@ -1,5 +1,5 @@
 ## About
-A Google Apps Script for creating a report spreadsheet based on your Trello board
+A Google Apps Script for creating a report spreadsheet based on your Trello board. Read our [blog post](http://springerpe.github.io/tech/2014/09/22/trello-iteration-reporting.html), if you are interested in some background information.
 
 ## Quickstart 
 

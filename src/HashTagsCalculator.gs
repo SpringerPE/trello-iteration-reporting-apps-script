@@ -37,7 +37,7 @@ function getHashTagsFromCardName(cardName) {
   if (DEBUG) Logger.log("Getting hash tags from card with name: %s", cardName)
   
   var cn = cardName.trim();
-  var foundHashTags = cn.match(/#[a-z]+/gi);
+  var foundHashTags = cn.match(/#[a-z0-9]+/gi);
     
   if (DEBUG) Logger.log("Detected hash tags: %s", foundHashTags);
   

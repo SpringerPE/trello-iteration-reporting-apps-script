@@ -1,9 +1,10 @@
 function getOrCreateIterationSpreadsheet(spreadsheetName) {
 
-  var files = DocsList.find(spreadsheetName)
-    
-  for(var i in files) {
-    if(files[i].getName() == spreadsheetName) {
+  var files = DriveApp.searchFiles("title contains '"+spreadsheetName+"'")
+  
+  while (files.hasNext()) {
+   var file = files.next();
+   if(file.getName() == spreadsheetName) {
       if (DEBUG) Logger.log('Spreadsheet "' + spreadsheetName +'" found.');
       return SpreadsheetApp.openById(files[i].getId());
     }

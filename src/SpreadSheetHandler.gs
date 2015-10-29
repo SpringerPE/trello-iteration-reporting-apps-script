@@ -6,7 +6,7 @@ function getOrCreateIterationSpreadsheet(spreadsheetName) {
    var file = files.next();
    if(file.getName() == spreadsheetName) {
       if (DEBUG) Logger.log('Spreadsheet "' + spreadsheetName +'" found.');
-      return SpreadsheetApp.openById(files[i].getId());
+      return SpreadsheetApp.openById(file.getId());
     }
   }
   
